@@ -34,7 +34,7 @@ namespace GAS_ServerSideCapstone.Controllers
         [HttpPost]
         public IActionResult Register(User user)
         {
-            _userRepository.Add(user);
+             _userRepository.Add(user);
             return CreatedAtAction(
                 nameof(GetByFirebaseUserId), new { firebaseUserId = user.FirebaseUserId }, user);
         }

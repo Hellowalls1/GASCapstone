@@ -12,6 +12,7 @@ namespace GAS_ServerSideCapstone.Models
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(50)]
         public string FirebaseUserId { get; set; }
 
         [Required]

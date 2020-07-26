@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { UserContext } from "../providers/UserProvider";
+import ItemList from "./ItemList";
 import Login from "./Login";
 import Register from "./Register";
 

@@ -9,10 +9,10 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { UserProfileContext } from "../providers/UserProfileProvider";
+import { UserContext } from "../providers/UserProvider";
 
 export default function Header() {
-  const { isLoggedIn, logout } = useContext(UserProfileContext);
+  const { isLoggedIn, logout } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -20,7 +20,7 @@ export default function Header() {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          Tabloid
+          GAS
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -30,7 +30,7 @@ export default function Header() {
               <>
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/item">
-                    Item
+                    My Gear
                   </NavLink>
                 </NavItem>
 

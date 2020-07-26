@@ -78,7 +78,7 @@ export const ItemProvider = (props) => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      }).then(getAllItemss)
+      }).then(getAllItems)
     );
   };
 
@@ -92,7 +92,6 @@ export const ItemProvider = (props) => {
         addItem,
         updateItem,
         deleteItem,
-        getItemsByCategoryId,
       }}
     >
       {props.children}

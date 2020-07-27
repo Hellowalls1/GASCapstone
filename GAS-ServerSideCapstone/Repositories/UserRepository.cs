@@ -19,8 +19,7 @@ namespace GAS_ServerSideCapstone.Repositories
         public User GetByFirebaseUserId(string firebaseUserId)
         {
             return _context.User
-            
-                .FirstOrDefault(up => up.FirebaseUserId == firebaseUserId);
+               .FirstOrDefault(u => u.FirebaseUserId == firebaseUserId);
         }
 
         public void Add(User user)

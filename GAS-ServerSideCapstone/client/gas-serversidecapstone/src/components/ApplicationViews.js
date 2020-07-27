@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { UserContext } from "../providers/UserProvider";
+import ItemList from "./ItemList";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -11,7 +12,11 @@ export default function ApplicationViews() {
     <main>
       <Switch>
         <Route path="/" exact>
-          {isLoggedIn ? <p>Hello logged in user</p> : <Redirect to="/login" />}
+          {isLoggedIn ? <p>Welcome to GAS!</p> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/item" exact>
+          {isLoggedIn ? <ItemList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">

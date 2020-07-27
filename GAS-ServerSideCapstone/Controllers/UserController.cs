@@ -23,12 +23,12 @@ namespace GAS_ServerSideCapstone.Controllers
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
-            var userProfile = _userRepository.GetByFirebaseUserId(firebaseUserId);
-            if (userProfile == null)
+            var user = _userRepository.GetByFirebaseUserId(firebaseUserId);
+            if (user == null)
             {
                 return NotFound();
             }
-            return Ok(userProfile);
+            return Ok(user);
         }
 
         [HttpPost]

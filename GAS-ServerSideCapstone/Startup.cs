@@ -72,6 +72,8 @@ namespace GAS_ServerSideCapstone
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

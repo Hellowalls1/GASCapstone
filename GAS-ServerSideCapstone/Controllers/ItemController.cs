@@ -18,17 +18,17 @@ namespace GAS_ServerSideCapstone.Controllers
     {
         private readonly ItemRepository _itemRepository;
         private readonly UserRepository _userRepository;
-       
+
 
         public ItemController(ApplicationDbContext context)
         {
             _itemRepository = new ItemRepository(context);
             _userRepository = new UserRepository(context);
-            
+
         }
 
         //getting the authorized user's 
-        private User GetCurrentUser ()
+        private User GetCurrentUser()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userRepository.GetByFirebaseUserId(firebaseUserId);
@@ -79,6 +79,11 @@ namespace GAS_ServerSideCapstone.Controllers
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return Ok(_itemRepository.GetByFirebaseUserId(firebaseUserId));
+
+
+            //var userItems = _itemRepository.GetByFirebaseUserId(firebaseUserId);
+            //return Ok(userItems);
+
         }
 
         [HttpPut("{id}")]
@@ -102,7 +107,8 @@ namespace GAS_ServerSideCapstone.Controllers
         //    ItemComments.ForEach(pc => _commentRepository.Delete(pc));
 
         //    _itemRepository.Delete(id);
-        //    return NoContent();
+        //    return .();
         //}
+
     }
 }

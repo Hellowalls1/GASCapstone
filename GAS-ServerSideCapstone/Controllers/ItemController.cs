@@ -79,11 +79,6 @@ namespace GAS_ServerSideCapstone.Controllers
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return Ok(_itemRepository.GetByFirebaseUserId(firebaseUserId));
-
-
-            //var userItems = _itemRepository.GetByFirebaseUserId(firebaseUserId);
-            //return Ok(userItems);
-
         }
 
         [HttpPut("{id}")]

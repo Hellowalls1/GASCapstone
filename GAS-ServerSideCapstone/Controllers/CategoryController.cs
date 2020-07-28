@@ -15,12 +15,12 @@ namespace GAS_ServerSideCapstone.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly CategoryRepository _categoryRepository;
-        private readonly UserRepository _userProfileRepository;
+        private readonly UserRepository _userRepository;
 
         public CategoryController(ApplicationDbContext context)
         {
             _categoryRepository = new CategoryRepository(context);
-            _userProfileRepository = new UserRepository(context);
+            _userRepository = new UserRepository(context);
         }
 
         [HttpGet]

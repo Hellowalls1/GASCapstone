@@ -40,9 +40,11 @@ export const ItemProvider = (props) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(item),
-      }).then((resp) => {
-        return resp.json();
       })
+        .then((resp) => {
+          return resp.json();
+        })
+        .then(getItemsByUser)
     );
 
   const getItemsByUser = () => {
@@ -78,7 +80,7 @@ export const ItemProvider = (props) => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      }).then(getAllItems)
+      }).then(getItemsByUser)
     );
   };
 

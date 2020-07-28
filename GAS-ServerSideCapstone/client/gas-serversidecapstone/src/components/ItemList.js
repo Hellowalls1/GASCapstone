@@ -33,7 +33,6 @@ const UserItemList = ({ item }) => {
   const [isForSale, setIsForSale] = useState();
   const [salePrice, setSalePrice] = useState();
   const [imageUrl, setImageUrl] = useState();
-  debugger;
 
   const submitForm = () => {
     addItem({

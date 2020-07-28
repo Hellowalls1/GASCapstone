@@ -22,7 +22,6 @@ const Item = ({ item }) => {
   const toggleDelete = () => {
     setDeleteModal(!deleteModal);
   };
-
   return (
     <>
       <Card className="m-4">
@@ -35,9 +34,20 @@ const Item = ({ item }) => {
           <p>Category: {item.category.title}</p>
           <p>{item.description}</p>
           <p>
-            {item.IsForSale
-              ? `Yes. It costs ${item.SalePrice}`
+            {item.isForSale === true
+              ? `Yes. It costs $${item.salePrice}`
               : "Item is not for sale"}
+            {/* 
+            {(() => {
+              switch (item.isForSale) {
+                case "false":
+                  return "Item is not for sale";
+                case "true":
+                  return "Item is  for sale";
+                default:
+                  return "Item is not for sale";
+              }
+            })()} */}
           </p>
         </CardBody>
         <Button onClick={toggleDelete}>Delete</Button>

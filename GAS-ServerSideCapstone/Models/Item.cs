@@ -28,7 +28,7 @@ namespace GAS_ServerSideCapstone.Models
         public string Description { get; set; }
 
         [Required]
-        public Boolean IsForSale { get; set; } //does this need to be booleon? or defined via logic
+        public bool IsForSale { get; set; } //does this need to be booleon? or defined via logic
 
         public string SalePrice { get; set; }
 

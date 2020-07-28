@@ -15,9 +15,9 @@ const UserItemList = ({ item }) => {
     setAddGearModal(!addGearModal);
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   useEffect(() => {
     getItemsByUser();
@@ -115,7 +115,7 @@ const UserItemList = ({ item }) => {
               <option key="0" value="0">
                 No
               </option>
-              <option value="1" key="1">
+              <option key="1" value="1">
                 Yes
               </option>
               )

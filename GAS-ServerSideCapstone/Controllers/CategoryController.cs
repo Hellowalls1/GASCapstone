@@ -30,6 +30,7 @@ namespace GAS_ServerSideCapstone.Controllers
         }
 
         [HttpPost]
+
         public IActionResult Post(Category category)
         {
             _categoryRepository.Add(category);

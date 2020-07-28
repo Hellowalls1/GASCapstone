@@ -75,7 +75,7 @@ export function UserProvider(props) {
 
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, login, logout, register, getToken }}
+      value={{ user, getUser, isLoggedIn, login, logout, register, getToken }}
     >
       {isFirebaseReady ? (
         props.children

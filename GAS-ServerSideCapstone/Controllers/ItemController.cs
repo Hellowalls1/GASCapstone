@@ -79,11 +79,6 @@ namespace GAS_ServerSideCapstone.Controllers
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return Ok(_itemRepository.GetByFirebaseUserId(firebaseUserId));
-
-
-            //var userItems = _itemRepository.GetByFirebaseUserId(firebaseUserId);
-            //return Ok(userItems);
-
         }
 
         [HttpPut("{id}")]
@@ -100,15 +95,12 @@ namespace GAS_ServerSideCapstone.Controllers
             return NoContent();
         }
 
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(int id)
-        //{
-        //    var ItemComments = _commentRepository.GetCommentsByItem(id);
-        //    ItemComments.ForEach(pc => _commentRepository.Delete(pc));
-
-        //    _itemRepository.Delete(id);
-        //    return .();
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+           _itemRepository.Delete(id);
+            return NoContent();
+        }
 
     }
 }

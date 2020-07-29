@@ -4,6 +4,7 @@ import { UserContext } from "../providers/UserProvider";
 import ItemList from "./ItemList";
 import Login from "./Login";
 import Register from "./Register";
+import ShowItemList from "./Show/ShowItemList";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserContext);
@@ -17,6 +18,10 @@ export default function ApplicationViews() {
 
         <Route path="/item" exact>
           {isLoggedIn ? <ItemList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/getAllNotForSale" exact>
+          {isLoggedIn ? <ShowItemList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">

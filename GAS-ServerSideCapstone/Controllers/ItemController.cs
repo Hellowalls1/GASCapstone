@@ -41,6 +41,14 @@ namespace GAS_ServerSideCapstone.Controllers
             return Ok(_itemRepository.GetAll());
         }
 
+        [Authorize]
+        [HttpGet("getallnotforsale")]
+        public IActionResult GetAllNotForSale()
+        {
+            return Ok(_itemRepository.GetAllNotForSale());
+        }
+
+
         [HttpPost]
         public IActionResult Post(Item item)
         {

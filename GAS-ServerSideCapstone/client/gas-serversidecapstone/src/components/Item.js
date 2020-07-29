@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import {
   Card,
   CardImg,
@@ -27,9 +27,18 @@ const Item = ({ item }) => {
   const [categoryId, setCategoryId] = useState(item.category.id);
   const [title, setTitle] = useState(item.title);
   const [description, setDescription] = useState(item.description);
-  const [isForSale, setIsForSale] = useState(item.isForSale);
+  // const [isForSale, setIsForSale] = useState(item.isForSale);
   const [salePrice, setSalePrice] = useState(item.salePrice);
   const [imageUrl, setImageUrl] = useState(item.imageUrl);
+  const [chosenSale, setChosenSale] = useState();
+  const isForSaleId = useRef();
+
+  //setting what the value of the bit dropdown is on initial render
+  useEffect(() => {
+    setChosenSale(item.isForSale);
+  }, []);
+
+  //setting the current value when someone changes the bit (changing the value of the inner ref which is the)
 
   const toggleDelete = () => {
     setDeleteModal(!deleteModal);
@@ -47,11 +56,14 @@ const Item = ({ item }) => {
       title: title,
       description: description,
       imageUrl: imageUrl,
-      isForSale: isForSale,
+      isForSale: chosenSale,
       salePrice: salePrice,
     });
   };
 
+  const handleChange = () => {
+    setChosenSale(isForSaleId.current.value);
+  };
   return (
     <>
       <Card className="m-4">
@@ -72,7 +84,6 @@ const Item = ({ item }) => {
         <Button onClick={toggleDelete}>Delete</Button>
         <Button onClick={toggleEdit}>Edit</Button>
       </Card>
-
       <Modal isOpen={deleteModal} toggle={toggleDelete}>
         <ModalBody>
           <div className="form-group">
@@ -105,7 +116,6 @@ const Item = ({ item }) => {
           </div>
         </ModalBody>
       </Modal>
-
       <Modal isOpen={editModal} toggle={toggleEdit}>
         <ModalBody>
           <div className="form-group">
@@ -152,17 +162,20 @@ const Item = ({ item }) => {
 
             <label htmlFor="isForSale">Is Item For Sale? </label>
             <select
+              type="select"
+              name="select"
               id="isForSale"
-              onChange={(e) => setIsForSale(e.target.value)}
+              value={chosenSale} //state variable
+              onChange={handleChange} //on the change you handle the change update what chosenSale is
+              ref={isForSaleId} //current value
               required
               autoFocus
               className="form-control mt-4"
-              // defaultValue={item.isForSale}
             >
-              <option key="0" value="0">
+              <option key="0" value="false">
                 No
               </option>
-              <option key="1" value="1">
+              <option key="1" value="true">
                 Yes
               </option>
               )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Button, Modal, ModalBody } from "reactstrap";
 import { ItemContext } from "../providers/ItemProvider";
 import { CategoryContext } from "../providers/CategoryProvider";
@@ -14,10 +14,6 @@ const UserItemList = ({ item }) => {
   const toggleAddGear = () => {
     setAddGearModal(!addGearModal);
   };
-
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
 
   useEffect(() => {
     getItemsByUser();
@@ -112,10 +108,10 @@ const UserItemList = ({ item }) => {
               autoFocus
               className="form-control mt-4"
             >
-              <option key="0" value="0">
+              <option key="0" value="false">
                 No
               </option>
-              <option key="1" value="1">
+              <option key="1" value="true">
                 Yes
               </option>
               )

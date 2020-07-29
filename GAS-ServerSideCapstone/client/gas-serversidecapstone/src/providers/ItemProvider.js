@@ -69,7 +69,9 @@ export const ItemProvider = (props) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(item),
-      }).then(getItemById(item.id))
+      })
+        .then(getItemById(item.id))
+        .then(getItemsByUser)
     );
 
   const deleteItem = (id) => {

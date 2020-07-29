@@ -81,13 +81,13 @@ const Item = ({ item }) => {
               : "Item is not for sale"}
           </p>
         </CardBody>
-        <Button onClick={toggleDelete}>Delete</Button>
+        <Button onClick={toggleDelete}>Sold</Button>
         <Button onClick={toggleEdit}>Edit</Button>
       </Card>
       <Modal isOpen={deleteModal} toggle={toggleDelete}>
         <ModalBody>
           <div className="form-group">
-            <h3>Are you sure you want to delete this "{item.title}"?</h3>
+            <h3>Are you sure you want to sell "{item.title}"?</h3>
             <div className="">
               <Button
                 type="submit"

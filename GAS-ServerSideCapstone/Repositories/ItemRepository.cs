@@ -38,6 +38,16 @@ namespace GAS_ServerSideCapstone.Repositories
             return All;
         }
 
+        public List<Item> GetAllItemsForSale()
+        {
+            var All = _context.Item.Include(i => i.User)
+                                   .Include(i => i.Category)
+                                   .Where(i => i.IsForSale == true)
+                                   .OrderByDescending(i => i.Title)
+                                   .ToList();
+            return All;
+        }
+
         public void Add(Item item)
         {
             _context.Add(item);

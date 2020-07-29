@@ -12,13 +12,15 @@ import {
 
 import { useHistory } from "react-router-dom";
 import { ItemContext } from "../../providers/ItemProvider";
+import { UserContext } from "../../providers/UserProvider";
 
 //using the Card component that comes with reactstrap to organize some of the post details
 const SellItem = ({ item }) => {
   const { deleteItem } = useContext(ItemContext);
-
+  const { user } = useContext(UserContext);
   const [soldModal, setSoldModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
+  const theUser = JSON.parse(user);
 
   const toggleSold = () => {
     setSoldModal(!soldModal);
@@ -41,8 +43,10 @@ const SellItem = ({ item }) => {
           <p>{item.description}</p>
           <p>{item.salePrice}</p>
         </CardBody>
-        <Button onClick={toggleSold}>Sold</Button>
-        <Button onClick={toggleEdit}>Edit</Button>
+        {item.userId === theUser.id && (
+          <Button onClick={toggleSold}>Sold</Button>
+        )}
+        <Button onClick={toggleEdit}>Haggle</Button>
       </Card>
       <Modal isOpen={soldModal} toggle={toggleSold}>
         <ModalBody>

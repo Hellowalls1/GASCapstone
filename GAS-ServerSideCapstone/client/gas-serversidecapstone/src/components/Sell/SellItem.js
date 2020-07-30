@@ -41,12 +41,12 @@ const SellItem = ({ item }) => {
           </CardSubtitle>
           <p>Category: {item.category.title}</p>
           <p>{item.description}</p>
-          <p>{item.salePrice}</p>
+          <p>${item.salePrice}</p>
         </CardBody>
         {item.userId === theUser.id && (
           <Button onClick={toggleSold}>Sold</Button>
         )}
-        <Button onClick={toggleEdit}>Haggle</Button>
+        <Button onClick={toggleEdit}>Barter</Button>
       </Card>
       <Modal isOpen={soldModal} toggle={toggleSold}>
         <ModalBody>

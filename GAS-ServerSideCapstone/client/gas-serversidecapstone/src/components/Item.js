@@ -81,7 +81,7 @@ const Item = ({ item }) => {
               : "Item is not for sale"}
           </p>
         </CardBody>
-        <Button onClick={toggleDelete}>Sold</Button>
+        <Button onClick={toggleDelete}>Delete</Button>
         <Button onClick={toggleEdit}>Edit</Button>
       </Card>
       <Modal isOpen={deleteModal} toggle={toggleDelete}>

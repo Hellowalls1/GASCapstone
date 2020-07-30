@@ -5,7 +5,7 @@ import SellItem from "./SellItem";
 import { ItemContext } from "../../providers/ItemProvider";
 
 const SellItemList = ({ showItem }) => {
-  const { items, getIfForSale } = useContext(ItemContext);
+  const { saleItems, getIfForSale } = useContext(ItemContext);
   const { categories, getAllCategories } = useContext(CategoryContext);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const SellItemList = ({ showItem }) => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="cards-column">
-            {items.map((item) => (
+            {saleItems.map((item) => (
               <SellItem key={item.id} item={item} />
             ))}
           </div>

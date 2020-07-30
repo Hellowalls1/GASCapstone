@@ -6,6 +6,7 @@ export const ItemContext = React.createContext();
 export const ItemProvider = (props) => {
   const apiUrl = "/api/item";
   const [items, setItems] = useState([]);
+  const [saleItems, setSaleItems] = useState([]);
 
   const { getToken } = useContext(UserContext);
 
@@ -42,7 +43,7 @@ export const ItemProvider = (props) => {
         },
       })
         .then((resp) => resp.json())
-        .then(setItems)
+        .then(setSaleItems)
     );
 
   const getItemById = (id) =>
@@ -122,6 +123,7 @@ export const ItemProvider = (props) => {
         deleteItem,
         getAllNotForSale,
         getIfForSale,
+        saleItems,
       }}
     >
       {props.children}

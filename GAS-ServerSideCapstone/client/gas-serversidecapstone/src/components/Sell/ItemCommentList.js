@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import { Button } from "reactstrap";
 import { useParams, Link } from "react-router-dom";
 import Comment from "./ItemComment";
 import { CommentContext } from "../../providers/CommentProvider";
@@ -39,8 +39,9 @@ const ItemCommentList = () => {
             value="Back to Posts"
             size="sm"
           >
-            Back to Item
+            Back to Sell
           </Link>
+          <Button>Barter</Button>
         </div>
       </div>
     </div>

@@ -1,19 +1,16 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Modal, ModalBody } from "reactstrap";
 import { CategoryContext } from "../../providers/CategoryProvider";
 import SellItem from "./SellItem";
 import { ItemContext } from "../../providers/ItemProvider";
 
 const SellItemList = ({ showItem }) => {
-  const { saleItems, getIfForSale } = useContext(ItemContext);
+  const { getIfForSale } = useContext(ItemContext);
   const { categories, getAllCategories } = useContext(CategoryContext);
+  const [saleItems, setSaleItems] = useState([]);
 
   useEffect(() => {
-    getIfForSale();
-  }, []);
-
-  useEffect(() => {
-    getAllCategories();
+    getIfForSale().then(setSaleItems);
   }, []);
 
   return (

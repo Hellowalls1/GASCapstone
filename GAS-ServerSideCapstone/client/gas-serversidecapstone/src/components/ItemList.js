@@ -2,13 +2,11 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { Button, Modal, ModalBody } from "reactstrap";
 import { ItemContext } from "../providers/ItemProvider";
 import { CategoryContext } from "../providers/CategoryProvider";
-import { UserContext } from "../providers/UserProvider";
 import Item from "./Item";
 
 const UserItemList = ({ item }) => {
   const { items, addItem, getItemsByUser } = useContext(ItemContext);
   const { categories, getAllCategories } = useContext(CategoryContext);
-  const { user, getUser } = useContext(UserContext);
   const [addGearModal, setAddGearModal] = useState(false);
 
   const toggleAddGear = () => {
@@ -32,7 +30,6 @@ const UserItemList = ({ item }) => {
 
   const submitForm = () => {
     addItem({
-      // userId: user.id,
       categoryId: parseInt(categoryId),
       title: title,
       description: description,

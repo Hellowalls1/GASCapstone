@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace GAS_ServerSideCapstone.Controllers
 {
     [Route("api/[controller]")]
@@ -18,7 +19,7 @@ namespace GAS_ServerSideCapstone.Controllers
     {
         private readonly ItemRepository _itemRepository;
         private readonly UserRepository _userRepository;
-
+        
 
         public ItemController(ApplicationDbContext context)
         {
@@ -52,6 +53,7 @@ namespace GAS_ServerSideCapstone.Controllers
         [HttpGet("getallitemsforsale")]
         public IActionResult GetAllItemsForSale()
         {
+  
             return Ok(_itemRepository.GetAllItemsForSale());
         }
 
@@ -116,6 +118,7 @@ namespace GAS_ServerSideCapstone.Controllers
            _itemRepository.Delete(id);
             return NoContent();
         }
+
 
     }
 }

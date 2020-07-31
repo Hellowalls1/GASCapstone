@@ -15,7 +15,6 @@ import { UserContext } from "../providers/UserProvider";
 import { ItemContext } from "../providers/ItemProvider";
 import { useHistory } from "react-router-dom";
 
-//using the Card component that comes with reactstrap to organize some of the post details
 const Item = ({ item }) => {
   const { deleteItem, updateItem } = useContext(ItemContext);
   const { categories } = useContext(CategoryContext);
@@ -64,6 +63,8 @@ const Item = ({ item }) => {
   const handleChange = () => {
     setChosenSale(isForSaleId.current.value);
   };
+
+  //line 76
   return (
     <>
       <Card className="m-4">

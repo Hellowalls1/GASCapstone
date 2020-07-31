@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
+import { useParams, Link } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -10,24 +11,20 @@ import {
   ModalBody,
 } from "reactstrap";
 
-import { useHistory } from "react-router-dom";
 import { ItemContext } from "../../providers/ItemProvider";
 import { UserContext } from "../../providers/UserProvider";
 
 //using the Card component that comes with reactstrap to organize some of the post details
 const SellItem = ({ item }) => {
+  const { id } = useParams();
   const { deleteItem } = useContext(ItemContext);
-  const { user } = useContext(UserContext);
   const [soldModal, setSoldModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
-  const theUser = JSON.parse(user);
+  const user = JSON.parse(sessionStorage.getItem("user")).id;
+  const theUser = JSON.parse(user).id;
 
   const toggleSold = () => {
     setSoldModal(!soldModal);
-  };
-
-  const toggleEdit = () => {
-    setEditModal(!editModal);
   };
 
   return (
@@ -43,10 +40,17 @@ const SellItem = ({ item }) => {
           <p>{item.description}</p>
           <p>${item.salePrice}</p>
         </CardBody>
-        {item.userId === theUser.id && (
-          <Button onClick={toggleSold}>Sold</Button>
-        )}
-        <Button onClick={toggleEdit}>Barter</Button>
+        {item.userId === user && <Button onClick={toggleSold}>Sold</Button>}
+
+        <Link
+          to={`/comments${id}`}
+          type="button"
+          class="btn btn-info"
+          value="Barter"
+          size="sm"
+        >
+          Barter
+        </Link>
       </Card>
       <Modal isOpen={soldModal} toggle={toggleSold}>
         <ModalBody>
@@ -60,6 +64,7 @@ const SellItem = ({ item }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   deleteItem(item.id);
+
                   {
                     toggleSold();
                   }

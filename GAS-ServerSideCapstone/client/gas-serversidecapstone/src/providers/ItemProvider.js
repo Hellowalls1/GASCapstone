@@ -45,7 +45,7 @@ export const ItemProvider = (props) => {
 
   const getItemById = (id) =>
     getToken().then((token) =>
-      fetch(`/api/item/${id}`, {
+      fetch(`${apiUrl}/${id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

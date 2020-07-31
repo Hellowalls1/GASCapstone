@@ -15,17 +15,18 @@ import { ItemContext } from "../../providers/ItemProvider";
 import { UserContext } from "../../providers/UserProvider";
 
 //using the Card component that comes with reactstrap to organize some of the post details
-const SellItem = ({ item, comments }) => {
+const SellItem = ({ item }) => {
   const { id } = useParams();
   const { deleteItem } = useContext(ItemContext);
   const [soldModal, setSoldModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const user = JSON.parse(sessionStorage.getItem("user")).id;
+  const theUser = JSON.parse(user).id;
 
   const toggleSold = () => {
     setSoldModal(!soldModal);
   };
-  debugger;
+
   return (
     <>
       <Card className="m-4">
@@ -42,7 +43,7 @@ const SellItem = ({ item, comments }) => {
         {item.userId === user && <Button onClick={toggleSold}>Sold</Button>}
 
         <Link
-          to={`/comments/${id}`}
+          to={`/comments/${item.id}`}
           type="button"
           class="btn btn-info"
           value="Barter"

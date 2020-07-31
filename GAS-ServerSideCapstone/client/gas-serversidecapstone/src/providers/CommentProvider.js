@@ -60,9 +60,7 @@ export const CommentProvider = (props) => {
     <CommentContext.Provider
       value={{
         comments,
-
         addComment,
-
         getCommentsByItemId,
         updateComment,
       }}

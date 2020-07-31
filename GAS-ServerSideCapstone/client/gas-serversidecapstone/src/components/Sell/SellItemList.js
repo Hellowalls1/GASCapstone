@@ -6,7 +6,6 @@ import { ItemContext } from "../../providers/ItemProvider";
 
 const SellItemList = ({ showItem }) => {
   const { getIfForSale } = useContext(ItemContext);
-  const { categories, getAllCategories } = useContext(CategoryContext);
   const [saleItems, setSaleItems] = useState([]);
 
   useEffect(() => {

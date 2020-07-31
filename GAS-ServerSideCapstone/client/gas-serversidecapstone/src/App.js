@@ -6,6 +6,7 @@ import { ItemProvider } from "./providers/ItemProvider";
 import { CategoryProvider } from "./providers/CategoryProvider";
 import Header from "./components/Header";
 import ApplicationViews from "./components/ApplicationViews";
+import { CommentProvider } from "./providers/CommentProvider";
 
 // import "./App.css";
 
@@ -15,8 +16,10 @@ function App() {
       <UserProvider>
         <ItemProvider>
           <CategoryProvider>
-            <Header />
-            <ApplicationViews />
+            <CommentProvider>
+              <Header />
+              <ApplicationViews />
+            </CommentProvider>
           </CategoryProvider>
         </ItemProvider>
       </UserProvider>

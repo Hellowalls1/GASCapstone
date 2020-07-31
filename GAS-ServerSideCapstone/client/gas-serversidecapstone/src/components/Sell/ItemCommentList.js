@@ -6,23 +6,25 @@ import { CommentContext } from "../../providers/CommentProvider";
 import { ItemContext } from "../../providers/ItemProvider";
 
 const ItemCommentList = () => {
-  const [item, setItem] = useState({});
-  const { comments, getCommentsByPostId } = useContext(CommentContext);
+  const { comments, getCommentsByItemId, comment } = useContext(CommentContext);
   const { getItemById } = useContext(ItemContext);
-
+  const [theItem, setTheItem] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
-    getCommentsByPostId(id);
-    getItemById(id).then(setItem);
+    getCommentsByItemId(parseInt(id));
   }, []);
 
+  useEffect(() => {
+    getItemById(parseInt(id)).then(setTheItem);
+  }, []);
+  debugger;
   return (
     <div className="container">
       <div className="row justify-content-center">
         <div className="cards-column">
           <p className="post-details-title">
-            <b>Post Title: </b> {item.title} {item.price}
+            <b>Item Title: </b> {theItem.title} {theItem.salePrice}
           </p>
           {comments.map((comment) => (
             <Comment key={comment.id} comment={comment} itemId={id} />
@@ -31,7 +33,7 @@ const ItemCommentList = () => {
           <br></br>
           <br></br>
           <Link
-            to={`/posts/${id}`}
+            to={`/items/${id}`}
             type="button"
             class="btn btn-info"
             value="Back to Posts"

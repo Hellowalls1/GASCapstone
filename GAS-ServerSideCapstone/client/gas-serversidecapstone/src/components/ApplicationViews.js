@@ -17,19 +17,15 @@ export default function ApplicationViews() {
         <Route path="/" exact>
           {isLoggedIn ? <p>Welcome to GAS!</p> : <Redirect to="/login" />}
         </Route>
-
         <Route path="/item" exact>
           {isLoggedIn ? <ItemList /> : <Redirect to="/login" />}
         </Route>
-
         <Route path="/getAllNotForSale" exact>
           {isLoggedIn ? <ShowItemList /> : <Redirect to="/login" />}
         </Route>
-
         <Route path="/getIfForSale" exact>
           {isLoggedIn ? <SellItemList /> : <Redirect to="/login" />}
         </Route>
-
         <Route path={`/comments/:id`}>
           {isLoggedIn ? <ItemCommentList /> : <Redirect to="/login" />}
         </Route>
@@ -37,7 +33,6 @@ export default function ApplicationViews() {
         <Route path="/login">
           <Login />
         </Route>
-
         <Route path="/register">
           <Register />
         </Route>

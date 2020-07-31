@@ -1,45 +1,111 @@
-import React, { useContext, useEffect, useState } from "react";
-import { CommentContext } from "../providers/CommentProvider";
+import React, { useContext, useState, useRef } from "react";
+import { Card, CardBody, Button, Modal, ModalBody } from "reactstrap";
+import { CommentContext } from "../../providers/CommentProvider";
+import { UserContext } from "../../providers/UserProvider";
 
-import { ItemContext } from "../providers/ItemProvider";
-import { useParams, Link } from "react-router-dom";
+const Comment = ({ comment, itemId }) => {
+  const [theComment, setTheComment] = useState(comment);
 
-const ItemCommentList = () => {
-  const [item, setItem] = useState({});
-  const { comments, getCommentsByPostId, comment } = useContext(CommentContext);
-  const { getItemById } = useContext(ItemContext);
+  const { user } = useContext(UserContext);
+  //   const user = JSON.parse(sessionStorage.getItem("user")).id;
+  const { updateComment } = useContext(CommentContext);
 
-  const { id } = useParams();
+  const subject = useRef();
+  const content = useRef();
 
-  useEffect(() => {
-    getCommentsByPostId(id);
-    getItemById(id).then(setItem);
-  }, []);
+  const [editModal, setEditModal] = useState(false);
+
+  //   const toggleAdd = () => {
+  //     setAddModal(!AddModal);
+  //   };
+
+  //   const submitForm = () => {
+  //     updateComment({
+  //       id: comment.id,
+  //       subject: subject.current.value,
+  //       content: content.current.value,
+  //       postId: parseInt(postId),
+  //       userProfileId: theUserProfile.id,
+  //       createDateTime: comment.createDateTime,
+  //     });
+  //   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="cards-column">
-          <p className="post-details-title">
-            <b>Post Title: </b> {item.title} {item.price}
+    <>
+      <Card className="m-4">
+        <p className="text-left px-2">{comment.userProfile.displayName}</p>
+
+        <CardBody>
+          <p className="comment-subject">
+            <b>Subject: </b>
+            {comment.Title}
           </p>
-          {comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} itemId={id} />
-          ))}
-          <br></br>
-          <br></br>
-          <br></br>
-          <Link
-            to={`/posts/${id}`}
-            type="button"
-            class="btn btn-info"
-            value="Back to Posts"
-            size="sm"
-          >
-            Back to Item
-          </Link>
-        </div>
-      </div>
-    </div>
+          <p className="comment-content">
+            <b>Content: </b>
+            {comment.description}
+          </p>
+          {/* <Button onClick={toggleEdit}>Edit</Button>) */}
+        </CardBody>
+      </Card>
+
+      {/* <Modal isOpen={editModal} toggle={toggleEdit}>
+        <ModalBody>
+          <div className="form-group">
+            <label htmlFor="subject">Subject: </label>
+            <input
+              type="text"
+              id="subject"
+              ref={subject}
+              required
+              autoFocus
+              className="form-control mt-4"
+              defaultValue={theComment.subject}
+            />
+
+            <label htmlFor="content">Content: </label>
+            <input
+              type="text-area"
+              id="content"
+              ref={content}
+              required
+              autoFocus
+              className="form-control mt-4"
+              defaultValue={theComment.content}
+            /> */}
+
+      {/* <div className="">
+              <Button
+                type="submit"
+                size="sm"
+                color="info"
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  if (content.current.value === "") {
+                    window.alert("You forgot to enter content!");
+                  } else if (subject.current.value === "") {
+                    window.alert("You forgot the subject!");
+                  } else {
+                    submitForm(comment);
+                    setTheComment({
+                      id: comment.id,
+                      subject: subject.current.value,
+                      content: content.current.value,
+                      postId: parseInt(postId),
+                      userProfileId: theUserProfile.id,
+                      createDateTime: comment.createDateTime,
+                    });
+                    toggleEdit();
+                  }
+                }}
+                className="btn mt-4"
+              >
+                Save
+              </Button>
+            </div>
+          </div>
+        </ModalBody>
+      </Modal> */}
+    </>
   );
 };
+export default Comment;

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../providers/UserProfileProvider";
+import { UserContext } from "./UserProvider";
 
 export const CommentContext = React.createContext();
 
@@ -7,7 +7,7 @@ export const CommentProvider = (props) => {
   const apiUrl = "/api/comment";
   const [comments, setComments] = useState([]);
 
-  const { getToken } = useContext(UserProfileContext);
+  const { getToken } = useContext(UserContext);
 
   const getComment = (id) => {
     return getToken().then((token) =>
@@ -60,9 +60,9 @@ export const CommentProvider = (props) => {
     <CommentContext.Provider
       value={{
         comments,
-        getCommentById,
+
         addComment,
-        getAllComments,
+
         getCommentsByItemId,
         updateComment,
       }}

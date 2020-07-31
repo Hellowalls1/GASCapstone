@@ -33,7 +33,7 @@ const ItemCommentList = () => {
           <br></br>
           <br></br>
           <Link
-            to={`/items/${id}`}
+            to={`/getifforsale`}
             type="button"
             class="btn btn-info"
             value="Back to Posts"

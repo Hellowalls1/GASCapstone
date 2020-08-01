@@ -23,10 +23,10 @@ const Comment = ({ comment, itemId }) => {
         <CardBody>
           <p className="comment-subject">
             <b>Subject: </b>
-            {comment.Title}
+            {comment.title}
           </p>
           <p className="comment-content">
-            <b>Content: </b>
+            <b>Message: </b>
             {comment.description}
           </p>
         </CardBody>

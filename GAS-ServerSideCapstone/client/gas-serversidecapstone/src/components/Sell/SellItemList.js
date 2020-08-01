@@ -4,14 +4,16 @@ import { CategoryContext } from "../../providers/CategoryProvider";
 import SellItem from "./SellItem";
 import { ItemContext } from "../../providers/ItemProvider";
 
-const SellItemList = ({ showItem }) => {
+const SellItemList = () => {
   const { getIfForSale } = useContext(ItemContext);
   const [saleItems, setSaleItems] = useState([]);
 
+  //refreshSellPage function that refreshes state. Passed down to the SellItem.js component  on line 25
   const refreshSellPage = () => {
     getIfForSale().then(setSaleItems);
   };
 
+  //getting all the items that are "forSale" and setting them as state to be mapped over and displayed
   useEffect(() => {
     getIfForSale().then(setSaleItems);
   }, []);

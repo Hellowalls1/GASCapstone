@@ -8,7 +8,7 @@ using GAS_ServerSideCapstone.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GAS_ServerSideCapstone.Controllers
+namespace GAS_ServerSideCapstone.Controllerscd 
 {
     [Route("api/[controller]")]
     [ApiController]

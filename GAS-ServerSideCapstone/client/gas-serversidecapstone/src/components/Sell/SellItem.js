@@ -15,7 +15,7 @@ import { ItemContext } from "../../providers/ItemProvider";
 import { UserContext } from "../../providers/UserProvider";
 
 //using the Card component that comes with reactstrap to organize some of the post details
-const SellItem = ({ item }) => {
+const SellItem = ({ refreshSellPage, item }) => {
   const { id } = useParams();
   const { deleteItem } = useContext(ItemContext);
   const [soldModal, setSoldModal] = useState(false);
@@ -64,7 +64,7 @@ const SellItem = ({ item }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   deleteItem(item.id);
-
+                  refreshSellPage();
                   {
                     toggleSold();
                   }

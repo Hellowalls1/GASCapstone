@@ -18,7 +18,7 @@ const ItemCommentList = () => {
   useEffect(() => {
     getItemById(parseInt(id)).then(setTheItem);
   }, []);
-  debugger;
+
   return (
     <div className="container">
       <div className="row justify-content-center">

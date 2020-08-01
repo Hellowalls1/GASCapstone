@@ -8,6 +8,10 @@ const SellItemList = ({ showItem }) => {
   const { getIfForSale } = useContext(ItemContext);
   const [saleItems, setSaleItems] = useState([]);
 
+  const refreshSellPage = () => {
+    getIfForSale().then(setSaleItems);
+  };
+
   useEffect(() => {
     getIfForSale().then(setSaleItems);
   }, []);
@@ -18,7 +22,11 @@ const SellItemList = ({ showItem }) => {
         <div className="row justify-content-center">
           <div className="cards-column">
             {saleItems.map((item) => (
-              <SellItem key={item.id} item={item} />
+              <SellItem
+                key={item.id}
+                item={item}
+                refreshSellPage={refreshSellPage}
+              />
             ))}
           </div>
         </div>

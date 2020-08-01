@@ -6,7 +6,9 @@ import { CommentContext } from "../../providers/CommentProvider";
 import { ItemContext } from "../../providers/ItemProvider";
 
 const ItemCommentList = () => {
-  const { comments, getCommentsByItemId, comment, addComment } = useContext(CommentContext);
+  const { comments, getCommentsByItemId, comment, addComment } = useContext(
+    CommentContext
+  );
   const { getItemById } = useContext(ItemContext);
   const [theItem, setTheItem] = useState({});
   const [addCommentModal, setAddCommentModal] = useState(false);
@@ -40,31 +42,33 @@ const ItemCommentList = () => {
     <>
       <div className="container">
         <div className="addCommentButton">
-          <Button size="lg" onClick={toggleAddCommentModal}>
+          <Button size="md" onClick={toggleAddCommentModal}>
             Add Comment
           </Button>
+          <Link
+            to={`/getifforsale`}
+            type="button"
+            class="btn btn-info"
+            value="Back to Posts"
+            size="sm"
+          >
+            Back to Sell Page
+          </Link>
         </div>
+
         <div className="row justify-content-center">
           <div className="cards-column">
             <p className="post-details-title">
-              <b>Item Title: </b> {theItem.title} {theItem.salePrice}
+              <b>Item: </b> {theItem.title}
             </p>
+            <p>Price :${theItem.salePrice}</p>
+
             {comments.map((comment) => (
               <Comment key={comment.id} comment={comment} itemId={id} />
             ))}
             <br></br>
             <br></br>
             <br></br>
-            <Link
-              to={`/getifforsale`}
-              type="button"
-              class="btn btn-info"
-              value="Back to Posts"
-              size="sm"
-            >
-              Back to Sell
-            </Link>
-            <Button>Barter</Button>
           </div>
         </div>
       </div>
@@ -107,7 +111,7 @@ const ItemCommentList = () => {
                     window.alert("You forgot a description!");
                   } else {
                     submitComment(comment);
-
+                    getCommentsByItemId(parseInt(id)); //getting all the comments by itemId before the modal closes to load with comment
                     toggleAddCommentModal();
                   }
                 }}

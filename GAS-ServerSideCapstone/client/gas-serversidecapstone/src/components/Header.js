@@ -35,13 +35,13 @@ export default function Header() {
                 </NavItem>
 
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="getAllNotForSale">
+                  <NavLink tag={RRNavLink} to="/getAllNotForSale">
                     Show
                   </NavLink>
                 </NavItem>
 
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/getItemsForSale">
+                  <NavLink tag={RRNavLink} to="/getIfForSale">
                     Sell
                   </NavLink>
                 </NavItem>

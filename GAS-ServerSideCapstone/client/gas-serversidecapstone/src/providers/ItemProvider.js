@@ -33,9 +33,19 @@ export const ItemProvider = (props) => {
         .then(setItems)
     );
 
+  const getIfForSale = () =>
+    getToken().then((token) =>
+      fetch(`${apiUrl}/getallitemsforsale`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((resp) => resp.json())
+    );
+
   const getItemById = (id) =>
     getToken().then((token) =>
-      fetch(`/api/item/${id}`, {
+      fetch(`${apiUrl}/${id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -109,6 +119,7 @@ export const ItemProvider = (props) => {
         updateItem,
         deleteItem,
         getAllNotForSale,
+        getIfForSale,
       }}
     >
       {props.children}

@@ -18,7 +18,7 @@ const ShowItemList = ({ showItem }) => {
 
   return (
     <>
-      <div className="container">
+      <div className="main">
         <div className="row justify-content-center">
           <div className="cards-column">
             {items.map((item) => (

@@ -5,7 +5,9 @@ import ItemList from "./ItemList";
 import Login from "./Login";
 import Register from "./Register";
 import ShowItemList from "./Show/ShowItemList";
-
+import SellItemList from "./Sell/SellItemList";
+import ItemCommentList from "./Sell/ItemCommentList";
+import gashome from "./images/gashome.jpg";
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserContext);
 
@@ -13,7 +15,13 @@ export default function ApplicationViews() {
     <main>
       <Switch>
         <Route path="/" exact>
-          {isLoggedIn ? <p>Welcome to GAS!</p> : <Redirect to="/login" />}
+          {isLoggedIn ? (
+            <p>
+              <img top width="100%" src={gashome} />
+            </p>
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
 
         <Route path="/item" exact>
@@ -22,6 +30,14 @@ export default function ApplicationViews() {
 
         <Route path="/getAllNotForSale" exact>
           {isLoggedIn ? <ShowItemList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/getIfForSale" exact>
+          {isLoggedIn ? <SellItemList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path={`/comments/:id`}>
+          {isLoggedIn ? <ItemCommentList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">

@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.main {
+  background-image: url(./components/images/gashome.jpg);
+}
+
+.card-title {
+  text-align: center;
+  font-family: cursive;
+  font-size: large;
+  font-style: italic;
+}
+
+.body {
+  background-image: url("./components/images/gashome.jpg");
+}

@@ -70,16 +70,19 @@ const Item = ({ item }) => {
       <Card className="m-4">
         <CardImg top width="100%" src={item.imageUrl} alt="Card image cap" />
         <CardBody>
-          <CardTitle>{item.title}</CardTitle>
-          <CardSubtitle>
-            Posted by: {item.user?.firstName} {item.user.lastName}
+          <CardTitle className="gear-title">{item.title}</CardTitle>
+          <CardSubtitle className="gear-owner">
+            <p>
+              {" "}
+              Owner: {item.user?.firstName} {item.user.lastName}{" "}
+            </p>
           </CardSubtitle>
-          <p>Category: {item.category.title}</p>
-          <p>{item.description}</p>
-          <p>
+          <p className="gear-category">Type: {item.category.title}</p>
+          <p className="gear-description">{item.description}</p>
+          <p className="gear-price">
             {item.isForSale === true
-              ? `Yes. It costs $${item.salePrice}`
-              : "Item is not for sale"}
+              ? `Price: $${item.salePrice}`
+              : "Item not listed for sale"}
           </p>
         </CardBody>
         <Button onClick={toggleDelete}>Delete</Button>

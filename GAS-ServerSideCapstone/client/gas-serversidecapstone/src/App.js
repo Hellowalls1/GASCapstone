@@ -7,7 +7,7 @@ import { CategoryProvider } from "./providers/CategoryProvider";
 import Header from "./components/Header";
 import ApplicationViews from "./components/ApplicationViews";
 import { CommentProvider } from "./providers/CommentProvider";
-
+import "./App.css";
 // import "./App.css";
 
 function App() {

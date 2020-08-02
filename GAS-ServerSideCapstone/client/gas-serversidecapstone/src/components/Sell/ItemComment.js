@@ -3,32 +3,26 @@ import { Card, CardBody, Button, Modal, ModalBody } from "reactstrap";
 import { CommentContext } from "../../providers/CommentProvider";
 import { UserContext } from "../../providers/UserProvider";
 
-const Comment = ({ comment, itemId }) => {
-  const [theComment, setTheComment] = useState(comment);
-
-  const { user } = useContext(UserContext);
-  //   const user = JSON.parse(sessionStorage.getItem("user")).id;
-  const { updateComment } = useContext(CommentContext);
-
-  const subject = useRef();
-  const content = useRef();
-
-  const [editModal, setEditModal] = useState(false);
-
+const Comment = ({ comment, itemId, refreshCommentPage }) => {
   return (
     <>
       <Card className="m-4">
-        <p className="text-left px-2">{comment.user.firstName}</p>
-
         <CardBody>
-          <p className="comment-subject">
-            <b>Subject: </b>
-            {comment.title}
-          </p>
-          <p className="comment-content">
-            <b>Message: </b>
-            {comment.description}
-          </p>
+          <div className="comment-card">
+            <p className="comment-subject">
+              <b> </b>
+              {comment.title}
+            </p>
+
+            <p className="comment-content">
+              <b>Message: </b>
+              {comment.description}
+
+              <p className="user-comment">
+                By: {comment.user.firstName} {comment.user.lastName}
+              </p>
+            </p>
+          </div>
         </CardBody>
       </Card>
     </>

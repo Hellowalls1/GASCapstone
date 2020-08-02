@@ -20,16 +20,18 @@ const SellItemList = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="cards-column">
-            {saleItems.map((item) => (
-              <SellItem
-                key={item.id}
-                item={item}
-                refreshSellPage={refreshSellPage}
-              />
-            ))}
+      <div className="main">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="cards-column">
+              {saleItems.map((item) => (
+                <SellItem
+                  key={item.id}
+                  item={item}
+                  refreshSellPage={refreshSellPage}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

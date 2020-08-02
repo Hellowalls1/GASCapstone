@@ -41,7 +41,7 @@ const UserItemList = ({ item }) => {
 
   return (
     <>
-      <div className="container">
+      <div className="main">
         <div className="addGearButton">
           <Button size="lg" onClick={toggleAddGear}>
             Add Gear

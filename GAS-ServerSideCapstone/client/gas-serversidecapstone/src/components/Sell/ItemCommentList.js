@@ -25,6 +25,10 @@ const ItemCommentList = () => {
     getCommentsByItemId(parseInt(id));
   }, []);
 
+  const refreshCommentPage = () => {
+    getCommentsByItemId(parseInt(id));
+  };
+
   useEffect(() => {
     getItemById(parseInt(id)).then(setTheItem);
   }, []);
@@ -40,28 +44,33 @@ const ItemCommentList = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="addCommentButton">
-          <Button size="md" onClick={toggleAddCommentModal}>
-            Add Comment
-          </Button>
-          <Link
-            to={`/getifforsale`}
-            type="button"
-            class="btn btn-info"
-            value="Back to Posts"
-            size="sm"
-          >
-            Back to Sell Page
-          </Link>
+      <div className="main">
+        <div className="comment-buttons">
+          <p className="add-comment-button">
+            <Button size="md" onClick={toggleAddCommentModal}>
+              Add Comment
+            </Button>
+          </p>
+
+          <p className="back-to-sell">
+            <Link
+              to={`/getifforsale`}
+              type="button"
+              class="btn btn-info"
+              value="Back to Posts"
+              size="sm"
+            >
+              Back to Sell Page
+            </Link>
+          </p>
         </div>
 
         <div className="row justify-content-center">
           <div className="cards-column">
-            <p className="post-details-title">
-              <b>Item: </b> {theItem.title}
+            <p className="comment-top">
+              <p className="comment-item-title">{theItem.title}</p>
+              <p className="comment-item-price">Price: ${theItem.salePrice}</p>
             </p>
-            <p>Price :${theItem.salePrice}</p>
 
             {comments.map((comment) => (
               <Comment key={comment.id} comment={comment} itemId={id} />
@@ -76,8 +85,6 @@ const ItemCommentList = () => {
       <Modal isOpen={addCommentModal} toggle={toggleAddCommentModal}>
         <ModalBody>
           <div className="form-group">
-            <label htmlFor="comment">Category: </label>
-
             <label htmlFor="title">Title: </label>
             <input
               type="text"
@@ -111,7 +118,8 @@ const ItemCommentList = () => {
                     window.alert("You forgot a description!");
                   } else {
                     submitComment(comment);
-                    getCommentsByItemId(parseInt(id)); //getting all the comments by itemId before the modal closes to load with comment
+                    // getCommentsByItemId(parseInt(id)); //getting all the comments by itemId before the modal closes to load with comment
+                    refreshCommentPage();
                     toggleAddCommentModal();
                   }
                 }}

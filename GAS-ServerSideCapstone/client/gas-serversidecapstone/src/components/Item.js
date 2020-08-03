@@ -9,29 +9,28 @@ import {
   CardSubtitle,
   ModalBody,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+
 import { CategoryContext } from "../providers/CategoryProvider";
-import { UserContext } from "../providers/UserProvider";
 import { ItemContext } from "../providers/ItemProvider";
-import { useHistory } from "react-router-dom";
+
 
 const Item = ({ item }) => {
   const { deleteItem, updateItem } = useContext(ItemContext);
   const { categories } = useContext(CategoryContext);
 
+  //setting state of the modals 
   const [deleteModal, setDeleteModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
 
-  const [userId, setUserId] = useState(item.user.id);
-  const [categoryId, setCategoryId] = useState(item.category.id);
-  const [title, setTitle] = useState(item.title);
-  const [description, setDescription] = useState(item.description);
-  // const [isForSale, setIsForSale] = useState(item.isForSale);
+  // using ref for is for sale
+  const isForSaleId = useRef();
   const [salePrice, setSalePrice] = useState(item.salePrice);
   const [imageUrl, setImageUrl] = useState(item.imageUrl);
   const [chosenSale, setChosenSale] = useState();
-  const isForSaleId = useRef();
-
+  const [categoryId, setCategoryId] = useState(item.category.id);
+  const [title, setTitle] = useState(item.title);
+  const [description, setDescription] = useState(item.description);
+  
   //setting what the value of the bit dropdown is on initial render
   useEffect(() => {
     setChosenSale(item.isForSale);
@@ -47,10 +46,10 @@ const Item = ({ item }) => {
     setEditModal(!editModal);
   };
 
+  //taking the value for keys from state and ref
   const submitForm = () => {
     updateItem({
       id: item.id,
-      // userId: user.id,
       categoryId: parseInt(categoryId),
       title: title,
       description: description,
@@ -60,11 +59,12 @@ const Item = ({ item }) => {
     });
   };
 
+  //setting the value of is for sale whenever it is changed
   const handleChange = () => {
     setChosenSale(isForSaleId.current.value);
   };
 
-  //line 76
+ 
   return (
     <>
       <div className="sell-item-container">
@@ -110,7 +110,7 @@ const Item = ({ item }) => {
                   color="info"
                   onClick={(e) => {
                     e.preventDefault();
-                    deleteItem(item.id);
+                    deleteItem(item.id); //when button is clicked deleteItem from the database by it's id
                     {
                       toggleDelete();
                     }

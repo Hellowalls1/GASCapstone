@@ -16,17 +16,15 @@ import { UserContext } from "../../providers/UserProvider";
 
 //using the Card component that comes with reactstrap to organize some of the post details
 const SellItem = ({ refreshSellPage, item }) => {
-  const { id } = useParams();
   const { deleteItem } = useContext(ItemContext);
   const [soldModal, setSoldModal] = useState(false);
-  const [editModal, setEditModal] = useState(false);
   const user = JSON.parse(sessionStorage.getItem("user")).id;
-  const theUser = JSON.parse(user).id;
 
   const toggleSold = () => {
     setSoldModal(!soldModal);
   };
 
+  //this module only loads the sold button to the active users items
   return (
     <>
       <Card className="m-4">
@@ -63,8 +61,8 @@ const SellItem = ({ refreshSellPage, item }) => {
                 color="info"
                 onClick={(e) => {
                   e.preventDefault();
-                  deleteItem(item.id);
-                  refreshSellPage();
+                  deleteItem(item.id); //deleting item by id
+                  refreshSellPage(); //function passed down in props that refreshes the state of the sellPage before the toggle so that page re renders
                   {
                     toggleSold();
                   }

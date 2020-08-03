@@ -4,16 +4,12 @@ import { CategoryContext } from "../../providers/CategoryProvider";
 import ShowItem from "./ShowItem";
 import { ItemContext } from "../../providers/ItemProvider";
 
-const ShowItemList = ({ showItem }) => {
+const ShowItemList = () => {
   const { items, getAllNotForSale } = useContext(ItemContext);
-  const { categories, getAllCategories } = useContext(CategoryContext);
 
+  //rendering all items were "isForSlae" is false
   useEffect(() => {
     getAllNotForSale();
-  }, []);
-
-  useEffect(() => {
-    getAllCategories();
   }, []);
 
   return (

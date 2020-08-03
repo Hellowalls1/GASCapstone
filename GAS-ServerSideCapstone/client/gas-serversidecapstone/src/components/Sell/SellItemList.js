@@ -8,7 +8,7 @@ const SellItemList = () => {
   const { getIfForSale } = useContext(ItemContext);
   const [saleItems, setSaleItems] = useState([]);
 
-  //refreshSellPage function that refreshes state. Passed down to the SellItem.js component  on line 25
+  //refreshSellPage function that refreshes state. Passed down to the SellItem.js component  on line 31
   const refreshSellPage = () => {
     getIfForSale().then(setSaleItems);
   };
@@ -28,7 +28,7 @@ const SellItemList = () => {
                 <SellItem
                   key={item.id}
                   item={item}
-                  refreshSellPage={refreshSellPage}
+                  refreshSellPage={refreshSellPage} //sending via props to child
                 />
               ))}
             </div>

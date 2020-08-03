@@ -10,25 +10,30 @@ const ItemCommentList = () => {
     CommentContext
   );
   const { getItemById } = useContext(ItemContext);
+
   const [theItem, setTheItem] = useState({});
   const [addCommentModal, setAddCommentModal] = useState(false);
-  const { id } = useParams();
   const user = JSON.parse(sessionStorage.getItem("user")).id;
   const [commentTitle, setCommentTitle] = useState();
   const [commentDescription, setCommentDescription] = useState();
+
+  const { id } = useParams();
 
   const toggleAddCommentModal = () => {
     setAddCommentModal(!addCommentModal);
   };
 
+  //initially getting all of the comments by the item id (passed by params)
   useEffect(() => {
     getCommentsByItemId(parseInt(id));
   }, []);
 
+  //function that allows page to be refreshed
   const refreshCommentPage = () => {
     getCommentsByItemId(parseInt(id));
   };
 
+  //use effect that gets the item by id and then sets the state of item on render to be used below
   useEffect(() => {
     getItemById(parseInt(id)).then(setTheItem);
   }, []);
@@ -73,7 +78,7 @@ const ItemCommentList = () => {
             </p>
 
             {comments.map((comment) => (
-              <Comment key={comment.id} comment={comment} itemId={id} />
+              <Comment key={comment.id} comment={comment} itemId={id} /> //passing item id and comment down in props
             ))}
             <br></br>
             <br></br>
@@ -118,8 +123,8 @@ const ItemCommentList = () => {
                     window.alert("You forgot a description!");
                   } else {
                     submitComment(comment);
-                    // getCommentsByItemId(parseInt(id)); //getting all the comments by itemId before the modal closes to load with comment
                     refreshCommentPage();
+                    getCommentsByItemId(parseInt(id));
                     toggleAddCommentModal();
                   }
                 }}

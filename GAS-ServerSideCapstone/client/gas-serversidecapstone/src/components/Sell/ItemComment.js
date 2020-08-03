@@ -1,9 +1,7 @@
-import React, { useContext, useState, useRef } from "react";
-import { Card, CardBody, Button, Modal, ModalBody } from "reactstrap";
-import { CommentContext } from "../../providers/CommentProvider";
-import { UserContext } from "../../providers/UserProvider";
+import React from "react";
+import { Card, CardBody } from "reactstrap";
 
-const Comment = ({ comment, itemId, refreshCommentPage }) => {
+const Comment = ({ comment }) => {
   return (
     <>
       <Card className="m-4">

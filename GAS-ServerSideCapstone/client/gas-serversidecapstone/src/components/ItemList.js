@@ -13,14 +13,17 @@ const UserItemList = ({ item }) => {
     setAddGearModal(!addGearModal);
   };
 
+  //getting all items by current
   useEffect(() => {
     getItemsByUser();
   }, []);
 
+  //getting all the categories
   useEffect(() => {
     getAllCategories();
   }, []);
 
+  //state to handle edit form
   const [categoryId, setCategoryId] = useState();
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
@@ -28,6 +31,7 @@ const UserItemList = ({ item }) => {
   const [salePrice, setSalePrice] = useState();
   const [imageUrl, setImageUrl] = useState();
 
+  //setting values to keys for edit form
   const submitForm = () => {
     addItem({
       categoryId: parseInt(categoryId),
@@ -70,7 +74,9 @@ const UserItemList = ({ item }) => {
               <option key="0" value="0">
                 Select A Category
               </option>
-              {categories.map((c) => (
+              {categories.map((
+                c //maping over all the categories so there are options in dropdown (0 value is "Select a Category")
+              ) => (
                 <option value={c.id} key={c.id}>
                   {c.title}
                 </option>
@@ -139,7 +145,7 @@ const UserItemList = ({ item }) => {
                 size="sm"
                 color="info"
                 onClick={(evt) => {
-                  evt.preventDefault();
+                  evt.preventDefault(); //alerts for fields left null
                   if (categoryId === "0") {
                     window.alert("You forgot a category!");
                   } else if (!title) {

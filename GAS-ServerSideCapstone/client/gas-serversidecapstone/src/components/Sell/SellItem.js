@@ -30,12 +30,13 @@ const SellItem = ({ refreshSellPage, item }) => {
         <CardImg top width="100%" src={item.imageUrl} alt="Card image cap" />
         <CardBody>
           <CardTitle>{item.title}</CardTitle>
-          <CardSubtitle>
+          <p className="sell-name">
             Posted by: {item.user?.firstName} {item.user.lastName}
-          </CardSubtitle>
-          <p>Category: {item.category.title}</p>
-          <p>{item.description}</p>
-          <p>${item.salePrice}</p>
+          </p>
+
+          <p className="sell-title">Category: {item.category.title}</p>
+          <p className="sell-description">{item.description}</p>
+          <p className="sell-price">${item.salePrice}</p>
         </CardBody>
         {item.userId === user && <Button onClick={toggleSold}>Sold</Button>}
 

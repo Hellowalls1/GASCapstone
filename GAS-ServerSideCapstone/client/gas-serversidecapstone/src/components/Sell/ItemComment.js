@@ -8,8 +8,7 @@ const Comment = ({ comment }) => {
         <CardBody>
           <div className="comment-card">
             <p className="comment-subject">
-              <b> </b>
-              {comment.title}
+              <b>{comment.title}</b>
             </p>
 
             <p className="comment-content">
@@ -17,7 +16,8 @@ const Comment = ({ comment }) => {
               {comment.description}
 
               <p className="user-comment">
-                By: {comment.user.firstName} {comment.user.lastName}
+                <b>By:</b>
+                {comment.user.firstName} {comment.user.lastName}
               </p>
             </p>
           </div>

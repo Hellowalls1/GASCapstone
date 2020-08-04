@@ -61,7 +61,7 @@
 .card-title {
   text-align: center;
   font-family: "Alfa Slab One", cursive;
-  font-size: large;
+  font-size: x-large;
 }
 
 .body {
@@ -70,7 +70,14 @@
   height: fit-content;
 }
 
-.gear-category {
+.gear-category,
+.gear-description,
+.gear-userName,
+.gear-price,
+.sell-name,
+.sell-title,
+.sell-price,
+.sell-description {
   font-family: "Alfa Slab One", cursive;
 }
 /* 
@@ -99,4 +106,14 @@ comment page */
   font-size: large;
   font-size: x-large;
   color: antiquewhite;
+}
+
+.card-img-top {
+  width: 100%;
+  height: fit-content;
+  object-fit: scale-down;
+}
+
+.cards-column {
+  width: 50%;
 }

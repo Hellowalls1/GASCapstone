@@ -82,7 +82,7 @@ const Item = ({ item }) => {
             <p className="gear-price">
               {item.isForSale === true
                 ? `Price: $${item.salePrice}`
-                : "Item not listed for sale"}
+                : "Item not for sale"}
             </p>
           </CardBody>
           <div className="gear-page-buttons">

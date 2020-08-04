@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Modal, ModalBody } from "reactstrap";
+import { Button, Modal, ModalBody, Card, CardImg } from "reactstrap";
 import { useParams, Link } from "react-router-dom";
 import Comment from "./ItemComment";
 import { CommentContext } from "../../providers/CommentProvider";
@@ -72,10 +72,15 @@ const ItemCommentList = () => {
 
         <div className="row justify-content-center">
           <div className="cards-column">
-            <p className="comment-top">
-              <p className="comment-item-title">{theItem.title}</p>
-              <p className="comment-item-price">Price: ${theItem.salePrice}</p>
-            </p>
+            <Card height="50%" className="comment-top">
+              <CardImg src={theItem.imageUrl} alt="comment-iamge" rounded />
+              <div className="comment-top">
+                <p className="comment-item-title">{theItem.title}</p>
+                <p className="comment-item-price">
+                  Price: ${theItem.salePrice}
+                </p>
+              </div>
+            </Card>
 
             {comments.map((comment) => (
               <Comment key={comment.id} comment={comment} itemId={id} /> //passing item id and comment down in props

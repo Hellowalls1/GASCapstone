@@ -75,7 +75,7 @@ const UserItemList = ({ item }) => {
                 Select A Category
               </option>
               {categories.map((
-                c //maping over all the categories so there are options in dropdown (0 value is "Select a Category")
+                c //mapping over all the categories so there are options in dropdown (0 value is "Select a Category")
               ) => (
                 <option value={c.id} key={c.id}>
                   {c.title}

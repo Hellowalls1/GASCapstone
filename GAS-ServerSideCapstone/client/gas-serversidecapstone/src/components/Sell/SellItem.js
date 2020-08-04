@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -12,7 +12,6 @@ import {
 } from "reactstrap";
 
 import { ItemContext } from "../../providers/ItemProvider";
-import { UserContext } from "../../providers/UserProvider";
 
 //using the Card component that comes with reactstrap to organize some of the post details
 const SellItem = ({ refreshSellPage, item }) => {
@@ -61,8 +60,9 @@ const SellItem = ({ refreshSellPage, item }) => {
                 color="info"
                 onClick={(e) => {
                   e.preventDefault();
-                  deleteItem(item.id); //deleting item by id
-                  refreshSellPage(); //function passed down in props that refreshes the state of the sellPage before the toggle so that page re renders
+
+                  deleteItem(item.id) //deleting item by id
+                    .then(refreshSellPage); //function passed down in props that refreshes the state of the sellPage before the toggle so that page re renders
                   {
                     toggleSold();
                   }

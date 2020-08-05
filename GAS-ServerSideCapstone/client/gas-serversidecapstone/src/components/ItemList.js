@@ -46,16 +46,18 @@ const UserItemList = ({ item }) => {
   return (
     <>
       <div className="main">
-        <div className="addGearButton">
-          <Button size="lg" onClick={toggleAddGear}>
-            Add Gear
-          </Button>
-        </div>
-        <div className="row justify-content-center">
-          <div className="cards-column">
-            {items.map((item) => (
-              <Item key={item.id} item={item} />
-            ))}
+        <div className="container">
+          <div className="addGearButton">
+            <Button size="lg" block onClick={toggleAddGear}>
+              Add Gear
+            </Button>
+          </div>
+          <div className="row justify-content-center">
+            <div className="cards-column">
+              {items.map((item) => (
+                <Item key={item.id} item={item} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -75,7 +77,7 @@ const UserItemList = ({ item }) => {
                 Select A Category
               </option>
               {categories.map((
-                c //maping over all the categories so there are options in dropdown (0 value is "Select a Category")
+                c //mapping over all the categories so there are options in dropdown (0 value is "Select a Category")
               ) => (
                 <option value={c.id} key={c.id}>
                   {c.title}

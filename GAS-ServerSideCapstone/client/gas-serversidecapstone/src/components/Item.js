@@ -9,16 +9,16 @@ import {
   CardSubtitle,
   ModalBody,
 } from "reactstrap";
+import "../App.css";
 
 import { CategoryContext } from "../providers/CategoryProvider";
 import { ItemContext } from "../providers/ItemProvider";
-
 
 const Item = ({ item }) => {
   const { deleteItem, updateItem } = useContext(ItemContext);
   const { categories } = useContext(CategoryContext);
 
-  //setting state of the modals 
+  //setting state of the modals
   const [deleteModal, setDeleteModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
 
@@ -30,7 +30,7 @@ const Item = ({ item }) => {
   const [categoryId, setCategoryId] = useState(item.category.id);
   const [title, setTitle] = useState(item.title);
   const [description, setDescription] = useState(item.description);
-  
+
   //setting what the value of the bit dropdown is on initial render
   useEffect(() => {
     setChosenSale(item.isForSale);
@@ -64,7 +64,6 @@ const Item = ({ item }) => {
     setChosenSale(isForSaleId.current.value);
   };
 
- 
   return (
     <>
       <div className="sell-item-container">
@@ -73,7 +72,7 @@ const Item = ({ item }) => {
           <CardBody>
             <CardTitle className="gear-title">{item.title}</CardTitle>
             <CardSubtitle className="gear-owner">
-              <p>
+              <p className="gear-userName">
                 {" "}
                 Owner: {item.user?.firstName} {item.user.lastName}{" "}
               </p>
@@ -83,19 +82,19 @@ const Item = ({ item }) => {
             <p className="gear-price">
               {item.isForSale === true
                 ? `Price: $${item.salePrice}`
-                : "Item not listed for sale"}
+                : "Item not for sale"}
             </p>
           </CardBody>
           <div className="gear-page-buttons">
+            <Button className="gear-edit-button" onClick={toggleEdit} size="lg">
+              Edit
+            </Button>
             <Button
               className="gear-delete-button"
               onClick={toggleDelete}
               size="lg"
             >
               Delete
-            </Button>
-            <Button className="gear-edit-button" onClick={toggleEdit} size="lg">
-              Edit
             </Button>
           </div>
         </Card>

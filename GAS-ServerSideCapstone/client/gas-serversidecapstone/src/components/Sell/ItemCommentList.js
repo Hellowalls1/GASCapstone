@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Modal, ModalBody } from "reactstrap";
+import { Button, Modal, ModalBody, Card, CardImg } from "reactstrap";
 import { useParams, Link } from "react-router-dom";
 import Comment from "./ItemComment";
 import { CommentContext } from "../../providers/CommentProvider";
@@ -50,92 +50,99 @@ const ItemCommentList = () => {
   return (
     <>
       <div className="main">
-        <div className="comment-buttons">
-          <p className="add-comment-button">
-            <Button size="md" onClick={toggleAddCommentModal}>
-              Add Comment
-            </Button>
-          </p>
-
-          <p className="back-to-sell">
-            <Link
-              to={`/getifforsale`}
-              type="button"
-              class="btn btn-info"
-              value="Back to Posts"
-              size="sm"
-            >
-              Back to Sell Page
-            </Link>
-          </p>
-        </div>
-
-        <div className="row justify-content-center">
-          <div className="cards-column">
-            <p className="comment-top">
-              <p className="comment-item-title">{theItem.title}</p>
-              <p className="comment-item-price">Price: ${theItem.salePrice}</p>
+        <div className="container">
+          <div className="comment-buttons">
+            <p className="add-comment-button">
+              <Button size="lg" color="primary" onClick={toggleAddCommentModal}>
+                Add Comment
+              </Button>
             </p>
 
-            {comments.map((comment) => (
-              <Comment key={comment.id} comment={comment} itemId={id} /> //passing item id and comment down in props
-            ))}
-            <br></br>
-            <br></br>
-            <br></br>
-          </div>
-        </div>
-      </div>
-
-      <Modal isOpen={addCommentModal} toggle={toggleAddCommentModal}>
-        <ModalBody>
-          <div className="form-group">
-            <label htmlFor="title">Title: </label>
-            <input
-              type="text"
-              id="title"
-              onChange={(e) => setCommentTitle(e.target.value)}
-              required
-              autoFocus
-              className="form-control mt-4"
-            />
-
-            <label htmlFor="description">Description: </label>
-            <input
-              type="text-area"
-              id="content"
-              onChange={(e) => setCommentDescription(e.target.value)}
-              required
-              autoFocus
-              className="form-control mt-4"
-            />
-
-            <div className="">
-              <Button
-                type="submit"
+            <p className="back-to-sell">
+              <Link
+                to={`/getifforsale`}
+                type="button"
+                class="btn btn-primary btn-lg"
+                value="Back to Posts"
                 size="sm"
-                color="info"
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  if (!commentTitle) {
-                    window.alert("You forgot a title!");
-                  } else if (!commentDescription) {
-                    window.alert("You forgot a description!");
-                  } else {
-                    submitComment(comment);
-                    refreshCommentPage();
-                    getCommentsByItemId(parseInt(id));
-                    toggleAddCommentModal();
-                  }
-                }}
-                className="btn mt-4"
               >
-                Save
-              </Button>
+                Back to Sell Page
+              </Link>
+            </p>
+          </div>
+
+          <div className="row justify-content-center">
+            <div className="cards-column">
+              <Card className="comment-top">
+                <CardImg src={theItem.imageUrl} alt="comment-iamge" />
+                <div className="comment-top">
+                  <p className="comment-item-title">{theItem.title}</p>
+                  <p className="comment-item-price">
+                    Price: ${theItem.salePrice}
+                  </p>
+                </div>
+              </Card>
+
+              {comments.map((comment) => (
+                <Comment key={comment.id} comment={comment} itemId={id} /> //passing item id and comment down in props
+              ))}
+              <br></br>
+              <br></br>
+              <br></br>
             </div>
           </div>
-        </ModalBody>
-      </Modal>
+
+          <Modal isOpen={addCommentModal} toggle={toggleAddCommentModal}>
+            <ModalBody>
+              <div className="form-group">
+                <label htmlFor="title">Title: </label>
+                <input
+                  type="text"
+                  id="title"
+                  onChange={(e) => setCommentTitle(e.target.value)}
+                  required
+                  autoFocus
+                  className="form-control mt-4"
+                />
+
+                <label htmlFor="description">Description: </label>
+                <input
+                  type="text-area"
+                  id="content"
+                  onChange={(e) => setCommentDescription(e.target.value)}
+                  required
+                  autoFocus
+                  className="form-control mt-4"
+                />
+
+                <div className="">
+                  <Button
+                    type="submit"
+                    size="sm"
+                    color="info"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      if (!commentTitle) {
+                        window.alert("You forgot a title!");
+                      } else if (!commentDescription) {
+                        window.alert("You forgot a description!");
+                      } else {
+                        submitComment(comment);
+                        refreshCommentPage();
+                        getCommentsByItemId(parseInt(id));
+                        toggleAddCommentModal();
+                      }
+                    }}
+                    className="btn mt-4"
+                  >
+                    Save
+                  </Button>
+                </div>
+              </div>
+            </ModalBody>
+          </Modal>
+        </div>
+      </div>
     </>
   );
 };

@@ -19,13 +19,14 @@ namespace GAS_ServerSideCapstone.Controllers
     {
         private readonly ItemRepository _itemRepository;
         private readonly UserRepository _userRepository;
+        private readonly CommentRepository _commentRepository;
         
 
         public ItemController(ApplicationDbContext context)
         {
             _itemRepository = new ItemRepository(context);
             _userRepository = new UserRepository(context);
-
+            _commentRepository = new CommentRepository(context);
         }
 
         //getting the authorized user's 
@@ -68,6 +69,7 @@ namespace GAS_ServerSideCapstone.Controllers
             return CreatedAtAction("Get", new { id = item.Id }, item);
         }
 
+        //getting item by id
         [Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
@@ -112,9 +114,15 @@ namespace GAS_ServerSideCapstone.Controllers
             return NoContent();
         }
 
+        // getting all the comments by ItemId from the comment repository
+        // then for each of the comments accessing the delte function from the comment repository and deleting each one
+        // then it deletes the item
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            List<Comment> ItemCommentsToDelete = _commentRepository.GetByItemId(id);
+            ItemCommentsToDelete.ForEach (ic => _commentRepository.Delete(ic));
+
            _itemRepository.Delete(id);
             return NoContent();
         }

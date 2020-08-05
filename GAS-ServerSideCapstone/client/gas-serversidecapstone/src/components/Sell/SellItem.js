@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -12,7 +12,6 @@ import {
 } from "reactstrap";
 
 import { ItemContext } from "../../providers/ItemProvider";
-import { UserContext } from "../../providers/UserProvider";
 
 //using the Card component that comes with reactstrap to organize some of the post details
 const SellItem = ({ refreshSellPage, item }) => {
@@ -31,19 +30,24 @@ const SellItem = ({ refreshSellPage, item }) => {
         <CardImg top width="100%" src={item.imageUrl} alt="Card image cap" />
         <CardBody>
           <CardTitle>{item.title}</CardTitle>
-          <CardSubtitle>
+          <p className="sell-name">
             Posted by: {item.user?.firstName} {item.user.lastName}
-          </CardSubtitle>
-          <p>Category: {item.category.title}</p>
-          <p>{item.description}</p>
-          <p>${item.salePrice}</p>
+          </p>
+
+          <p className="sell-title">Category: {item.category.title}</p>
+          <p className="sell-description">{item.description}</p>
+          <p className="sell-price">${item.salePrice}</p>
         </CardBody>
-        {item.userId === user && <Button onClick={toggleSold}>Sold</Button>}
+        {item.userId === user && (
+          <Button color="danger" onClick={toggleSold}>
+            Sold
+          </Button>
+        )}
 
         <Link
           to={`/comments/${item.id}`}
           type="button"
-          class="btn btn-info"
+          class="btn btn-primary"
           value="Barter"
           size="sm"
         >
@@ -61,8 +65,9 @@ const SellItem = ({ refreshSellPage, item }) => {
                 color="info"
                 onClick={(e) => {
                   e.preventDefault();
-                  deleteItem(item.id); //deleting item by id
-                  refreshSellPage(); //function passed down in props that refreshes the state of the sellPage before the toggle so that page re renders
+
+                  deleteItem(item.id) //deleting item by id
+                    .then(refreshSellPage); //function passed down in props that refreshes the state of the sellPage before the toggle so that page re renders
                   {
                     toggleSold();
                   }

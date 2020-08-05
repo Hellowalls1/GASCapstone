@@ -38,12 +38,16 @@ const SellItem = ({ refreshSellPage, item }) => {
           <p className="sell-description">{item.description}</p>
           <p className="sell-price">${item.salePrice}</p>
         </CardBody>
-        {item.userId === user && <Button onClick={toggleSold}>Sold</Button>}
+        {item.userId === user && (
+          <Button color="danger" onClick={toggleSold}>
+            Sold
+          </Button>
+        )}
 
         <Link
           to={`/comments/${item.id}`}
           type="button"
-          class="btn btn-info"
+          class="btn btn-primary"
           value="Barter"
           size="sm"
         >

@@ -16,7 +16,7 @@ const Comment = ({ comment }) => {
               {comment.description}
 
               <p className="user-comment">
-                <b>By:</b>
+                <b>Author: </b>
                 {comment.user.firstName} {comment.user.lastName}
               </p>
             </p>

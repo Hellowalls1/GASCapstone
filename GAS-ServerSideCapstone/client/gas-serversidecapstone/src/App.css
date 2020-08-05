@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 .App {
   text-align: center;
 }
@@ -73,19 +74,49 @@
 .gear-category,
 .gear-description,
 .gear-userName,
-.gear-price,
+.gear-price {
+  font-family: "Alfa Slab One", cursive;
+}
+
 .sell-name,
 .sell-title,
 .sell-price,
 .sell-description {
-  font-family: "Alfa Slab One", cursive;
+  font-family: "Merriweather", serif;
+  font-weight: 800;
+}
+
+.add-gear-button {
+  display: flex;
+  width: 50%;
+  max-width: 15rem;
+  justify-content: center;
+  align-items: center;
+  margin-left: 14.4rem;
+  font-size: 10rem;
+}
+
+.btn-group-lg > .btn,
+.btn-lg {
+  padding: 0.5rem 1rem;
+  font-size: 1.95rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
 }
 /* 
 comment page */
 
 .comment-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  font-family: "Merriweather", serif;
+}
+
+.add-comment-button {
+  margin-right: 1rem;
+}
+.back-to-sell {
+  margin-left: 1rem;
 }
 
 .comment-top {
@@ -93,11 +124,16 @@ comment page */
   display: flex;
 }
 
+.comment-subject {
+  text-align-last: center;
+}
+
 .comment-item-title {
   font-weight: bold;
   font-size: large;
   font-size: x-large;
-  color: antiquewhite;
+  color: rgb(10, 10, 10);
+  font-family: "Alfa Slab One", cursive;
 }
 
 .comment-item-price {
@@ -105,7 +141,8 @@ comment page */
   font-weight: bold;
   font-size: large;
   font-size: x-large;
-  color: antiquewhite;
+  color: rgb(0, 0, 0);
+  font-family: "Alfa Slab One", cursive;
 }
 
 .card-img-top {

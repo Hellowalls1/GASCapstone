@@ -20,12 +20,14 @@ export default function Login() {
 
   return (
     <>
-      <div className="">
+      <div className="login-page">
         <div className="container">
           <Form onSubmit={loginSubmit}>
             <fieldset>
               <FormGroup>
-                <Label for="email">Email</Label>
+                <Label className="email" for="email">
+                  Email
+                </Label>
                 <Input
                   id="email"
                   type="text"
@@ -33,7 +35,9 @@ export default function Login() {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="password">Password</Label>
+                <Label className="password" for="password">
+                  Password
+                </Label>
                 <Input
                   id="password"
                   type="password"
@@ -43,8 +47,11 @@ export default function Login() {
               <FormGroup>
                 <Button>Login</Button>
               </FormGroup>
-              <em>
-                Not registered? <Link to="register">Register</Link>
+              <em className="register">
+                Not registered? <br></br>
+                <Link to="register" type="button" class="btn btn-info">
+                  Register
+                </Link>
               </em>
             </fieldset>
           </Form>

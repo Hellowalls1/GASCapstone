@@ -39,7 +39,7 @@ const SellItem = ({ refreshSellPage, item }) => {
           <p className="sell-price">${item.salePrice}</p>
         </CardBody>
         {item.userId === user && (
-          <Button color="danger" onClick={toggleSold}>
+          <Button color="success" onClick={toggleSold}>
             Sold
           </Button>
         )}

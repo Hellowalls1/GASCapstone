@@ -25,6 +25,7 @@ export default function Header() {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
+            {/* When isLoggedIn === true, we will render the Post link */}
             {isLoggedIn && (
               <>
                 <NavItem>

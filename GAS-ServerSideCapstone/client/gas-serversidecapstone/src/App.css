@@ -43,7 +43,7 @@
 
 .main {
   background-image: url(./components/images/gashome.jpg);
-  background-size: cover;
+  /* background-size: cover; */
 }
 
 .login-page {
@@ -80,6 +80,7 @@
   background-image: url("./components/images/gashome.jpg");
   max-width: 100%;
   height: fit-content;
+  background-size: cover;
 }
 
 .gear-category,

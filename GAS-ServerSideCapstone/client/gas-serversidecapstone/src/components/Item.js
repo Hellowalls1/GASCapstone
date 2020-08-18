@@ -67,7 +67,7 @@ const Item = ({ item }) => {
   return (
     <>
       <div className="sell-item-container">
-        <Card className="m-4">
+        <Card className=" m-4">
           <CardImg top width="100%" src={item.imageUrl} alt="Card image cap" />
           <CardBody>
             <CardTitle className="gear-title">{item.title}</CardTitle>

@@ -47,7 +47,7 @@ const UserItemList = ({ item }) => {
     <>
       <div className="main">
         <div className="container">
-          <div className="addGearButton">
+          <div className="shadow p-3 mb-5  rounded w-25 mx-auto position-top addGearButton">
             <Button size="lg" block onClick={toggleAddGear}>
               Add Gear
             </Button>

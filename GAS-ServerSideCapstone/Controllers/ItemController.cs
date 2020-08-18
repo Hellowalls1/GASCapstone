@@ -93,6 +93,9 @@ namespace GAS_ServerSideCapstone.Controllers
             return Ok(item);
         }
 
+
+        //getting the firebaseUserId and storing it in a variable
+        //going to the _itemRepository and getting items by FirebaseUserId and passing the current firebaseUserID as an argument
         [HttpGet("getbyuser")]
         public IActionResult GetByUser()
         {

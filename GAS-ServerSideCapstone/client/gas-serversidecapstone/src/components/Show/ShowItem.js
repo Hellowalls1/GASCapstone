@@ -7,6 +7,7 @@ import {
   CardTitle,
   CardSubtitle,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const showItem = ({ item }) => {
   return (
@@ -16,11 +17,20 @@ const showItem = ({ item }) => {
         <CardBody>
           <CardTitle>{item.title}</CardTitle>
           <CardSubtitle>
-            Posted by: {item.user?.firstName} {item.user.lastName}
+            Owner: {item.user?.firstName} {item.user.lastName}
           </CardSubtitle>
-          <p>Category: {item.category.title}</p>
-          <p>{showItem.description}</p>
+          {/* <p>Category: {item.category.title}</p>
+          <p>{showItem.description}</p> */}
         </CardBody>
+        <Link
+          to={`/comments/${item.id}`}
+          type="button"
+          class="btn btn-primary"
+          value="Item Details"
+          size="sm"
+        >
+          Item details
+        </Link>
       </Card>
     </>
   );

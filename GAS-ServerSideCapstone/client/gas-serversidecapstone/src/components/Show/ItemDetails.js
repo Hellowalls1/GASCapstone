@@ -21,17 +21,17 @@ const itemDetails = () => {
   useEffect(() => {
     getItemById(parseInt(id)).then(setTheItem);
   }, []);
-};
 
-return (
-  <>
-    <Card className="comment-top">
-      <CardImg src={theItem.imageUrl} alt="comment-iamge" />
-      <div className="comment-top">
-        <p className="comment-item-title">{theItem.title}</p>
-        <p className="comment-item-price">Price: ${theItem.salePrice}</p>
-      </div>
-    </Card>
-  </>
-);
+  return (
+    <>
+      <Card className="comment-top">
+        <CardImg src={theItem.imageUrl} alt="comment-iamge" />
+        <div className="comment-top">
+          <p className="comment-item-title">{theItem.title}</p>
+          <p className="comment-item-price">Price: ${theItem.salePrice}</p>
+        </div>
+      </Card>
+    </>
+  );
+};
 export default itemDetails;

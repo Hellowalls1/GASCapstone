@@ -42,8 +42,8 @@ export default function ApplicationViews() {
           {isLoggedIn ? <ItemCommentList /> : <Redirect to="/login" />}
         </Route>
 
-        <Route path={`/getIfForSale/:id`}>
-          {isLoggedIn ? <itemDetails/> : <Redirect to="/login" />}
+        <Route path={`/getAllNotForSale/:id`}>
+          {isLoggedIn ? <itemDetails /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">

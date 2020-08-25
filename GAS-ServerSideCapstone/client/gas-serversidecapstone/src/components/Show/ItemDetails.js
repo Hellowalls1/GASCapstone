@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Card,
   CardImg,
@@ -10,12 +9,14 @@ import {
   CardSubtitle,
   ModalBody,
 } from "reactstrap";
+import { Link, useParams } from "react-router-dom";
 
 import { ItemContext } from "../../providers/ItemProvider";
 
-const itemDetails = () => {
+const ItemDetails = () => {
   const { getItemById } = useContext(ItemContext);
   const [theItem, setTheItem] = useState({});
+  const { id } = useParams();
 
   //use effect that gets the item by id and then sets the state of item on render to be used below
   useEffect(() => {
@@ -24,14 +25,16 @@ const itemDetails = () => {
 
   return (
     <>
-      <Card className="comment-top">
-        <CardImg src={theItem.imageUrl} alt="comment-iamge" />
-        <div className="comment-top">
-          <p className="comment-item-title">{theItem.title}</p>
-          <p className="comment-item-price">Price: ${theItem.salePrice}</p>
-        </div>
-      </Card>
+      <div className="item-details">
+        <Card className="comment-top">
+          <CardImg src={theItem.imageUrl} alt="comment-iamge" />
+          <div className="comment-top">
+            <p className="comment-item-title">{theItem.title}</p>
+            <p className="comment-item-price">Price: ${theItem.salePrice}</p>
+          </div>
+        </Card>
+      </div>
     </>
   );
 };
-export default itemDetails;
+export default ItemDetails;

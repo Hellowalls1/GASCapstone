@@ -8,7 +8,7 @@ import ShowItemList from "./Show/ShowItemList";
 import SellItemList from "./Sell/SellItemList";
 import ItemCommentList from "./Sell/ItemCommentList";
 import gashome from "./images/gashome.jpg";
-import itemDetails from "./Show/ItemDetails";
+import ItemDetails from "./Show/ItemDetails";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserContext);
@@ -43,7 +43,7 @@ export default function ApplicationViews() {
         </Route>
 
         <Route path={`/getAllNotForSale/:id`}>
-          {isLoggedIn ? <itemDetails /> : <Redirect to="/login" />}
+          {isLoggedIn ? <ItemDetails /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">

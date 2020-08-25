@@ -23,7 +23,7 @@ const showItem = ({ item }) => {
           <p>{showItem.description}</p> */}
         </CardBody>
         <Link
-          to={`/comments/${item.id}`}
+          to={`/getAllNotForSale/${item.id}`}
           type="button"
           class="btn btn-primary"
           value="Item Details"

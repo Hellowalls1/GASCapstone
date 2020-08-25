@@ -165,3 +165,33 @@ comment page */
 .cards-column {
   width: 50%;
 }
+
+.item-details-title {
+  font-weight: bold;
+  font-size: large;
+  font-size: x-large;
+  color: rgb(10, 10, 10);
+  font-family: "Oswald", sans-serif;
+}
+
+.item-details-price {
+  padding-left: 2rem;
+  font-weight: bold;
+  font-size: large;
+  font-size: x-large;
+  color: rgb(0, 0, 0);
+  font-family: "Oswald", sans-serif;
+}
+.item-details-description {
+  padding-left: 2rem;
+  font-weight: bold;
+  font-size: large;
+  font-size: x-large;
+  color: rgb(0, 0, 0);
+  font-family: "Oswald", sans-serif;
+}
+
+.item-details-top {
+  justify-content: center;
+  display: flex;
+}

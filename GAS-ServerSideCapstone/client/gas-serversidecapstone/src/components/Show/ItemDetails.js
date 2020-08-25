@@ -26,13 +26,24 @@ const ItemDetails = () => {
   return (
     <>
       <div className="item-details">
-        <Card className="comment-top">
-          <CardImg src={theItem.imageUrl} alt="comment-iamge" />
-          <div className="comment-top">
-            <p className="comment-item-title">{theItem.title}</p>
-            <p className="comment-item-price">Price: ${theItem.salePrice}</p>
+        <div className="row justify-content-center">
+          <div className="cards-column">
+            <Card className="comment-top">
+              <CardImg src={theItem.imageUrl} alt="comment-iamge" />
+              <CardBody>
+                <div className="item-details-top">
+                  <p className="item-details-title">{theItem.title}</p>
+                  <p className="item-details-price">
+                    Price: ${theItem.salePrice}
+                  </p>
+                  <p className="item-details-description">
+                    {theItem.description}
+                  </p>
+                </div>
+              </CardBody>
+            </Card>
           </div>
-        </Card>
+        </div>
       </div>
     </>
   );

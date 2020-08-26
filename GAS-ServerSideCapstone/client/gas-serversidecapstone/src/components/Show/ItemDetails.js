@@ -15,7 +15,11 @@ import { ItemContext } from "../../providers/ItemProvider";
 
 const ItemDetails = () => {
   const { getItemById } = useContext(ItemContext);
+
+  //theItems state will be set after the getItemById function gets called
   const [theItem, setTheItem] = useState({});
+
+  //allowing access to the id from the url to be passed in the getItemById function
   const { id } = useParams();
 
   //use effect that gets the item by id and then sets the state of item on render to be used below

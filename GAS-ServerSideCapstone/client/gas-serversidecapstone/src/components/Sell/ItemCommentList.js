@@ -17,6 +17,7 @@ const ItemCommentList = () => {
   const [commentTitle, setCommentTitle] = useState();
   const [commentDescription, setCommentDescription] = useState();
 
+  //allows access to id
   const { id } = useParams();
 
   const toggleAddCommentModal = () => {

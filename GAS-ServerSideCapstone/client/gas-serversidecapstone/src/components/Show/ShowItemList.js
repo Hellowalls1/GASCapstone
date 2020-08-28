@@ -7,7 +7,7 @@ import { ItemContext } from "../../providers/ItemProvider";
 const ShowItemList = () => {
   const { items, getAllNotForSale } = useContext(ItemContext);
 
-  //rendering all items were "isForSlae" is false
+  //rendering all items were "isForSale" is false
   useEffect(() => {
     getAllNotForSale();
   }, []);

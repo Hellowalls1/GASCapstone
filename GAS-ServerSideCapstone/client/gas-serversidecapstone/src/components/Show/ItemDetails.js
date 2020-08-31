@@ -29,6 +29,17 @@ const ItemDetails = () => {
 
   return (
     <>
+      <p className="back-to-sell">
+        <Link
+          to={`/getallnotforsale`}
+          type="button"
+          class="btn btn-primary btn-lg"
+          value="Back to Posts"
+          size="sm"
+        >
+          Back to Show Page
+        </Link>
+      </p>
       <div className="item-details">
         <div className="row justify-content-center">
           <div className="cards-column">

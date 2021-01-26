@@ -20,7 +20,7 @@ namespace GAS_ServerSideCapstone.Controllers
         private readonly ItemRepository _itemRepository;
         private readonly UserRepository _userRepository;
         private readonly CommentRepository _commentRepository;
-        
+        //so controller has access to all of the methods
 
         public ItemController(ApplicationDbContext context)
         {
@@ -35,7 +35,7 @@ namespace GAS_ServerSideCapstone.Controllers
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userRepository.GetByFirebaseUserId(firebaseUserId);
         }
-
+        //not being used
         [Authorize]
         [HttpGet]
         public IActionResult Get()
@@ -103,6 +103,12 @@ namespace GAS_ServerSideCapstone.Controllers
             return Ok(_itemRepository.GetByFirebaseUserId(firebaseUserId));
         }
 
+        //specifying id in the route parameter
+        //passing the id and the class/object you are passing as a result
+        //making sure the id that came in is the same as the item id
+        //passing the current user Id as the id?
+        //updating the item
+        //no return because we aren't returning any information
         [HttpPut("{id}")]
         public IActionResult Put(int id, Item item)
         {
@@ -118,7 +124,7 @@ namespace GAS_ServerSideCapstone.Controllers
         }
 
         // getting all the comments by ItemId from the comment repository
-        // then for each of the comments accessing the delte function from the comment repository and deleting each one
+        // then for each of the comments accessing the delete function from the comment repository and deleting each one
         // then it deletes the item
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

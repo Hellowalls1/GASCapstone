@@ -29,6 +29,8 @@ namespace GAS_ServerSideCapstone.Controllers
             return Ok(_categoryRepository.GetAll());
         }
 
+
+        //not being used
         [HttpPost]
 
         public IActionResult Post(Category category)
@@ -47,6 +49,9 @@ namespace GAS_ServerSideCapstone.Controllers
             }
             return Ok(category);
         }
+
+        //not being used
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, Category category)
         {
@@ -59,8 +64,8 @@ namespace GAS_ServerSideCapstone.Controllers
             return NoContent();
         }
 
-        // Currently, categories can only be deleted while not attached to a Post. Need a post repository method to pull the category by Id and remove the connection 
-
+        
+        //not being used
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

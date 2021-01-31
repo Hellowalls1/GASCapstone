@@ -50,19 +50,7 @@ namespace GAS_ServerSideCapstone.Controllers
             return Ok(category);
         }
 
-        //not being used
-
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, Category category)
-        {
-            if (id != category.Id)
-            {
-                return BadRequest();
-            }
-
-            _categoryRepository.Update(category);
-            return NoContent();
-        }
+      
 
         
         //not being used

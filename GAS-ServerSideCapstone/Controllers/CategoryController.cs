@@ -50,8 +50,6 @@ namespace GAS_ServerSideCapstone.Controllers
             return Ok(category);
         }
 
-      
-        asadfasdf
         
         
     }

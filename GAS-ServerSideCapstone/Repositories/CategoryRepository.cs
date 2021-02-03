@@ -26,12 +26,6 @@ namespace GAS_ServerSideCapstone.Repositories
 
         }
 
-        public void Add(Category category)
-        {
-            _context.Add(category);
-            _context.SaveChanges();
-        }
-
        
 
         public Category GetById(int id)

@@ -30,15 +30,7 @@ namespace GAS_ServerSideCapstone.Controllers
         }
 
 
-        //not being used
-        [HttpPost]
-
-        public IActionResult Post(Category category)
-        {
-            _categoryRepository.Add(category);
-            return CreatedAtAction("Get", new { id = category.Id }, category);
-        }
-
+ 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {

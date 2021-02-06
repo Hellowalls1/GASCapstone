@@ -9,6 +9,8 @@ export const ItemProvider = (props) => {
 
   const { getToken } = useContext(UserContext);
 
+
+  //never used
   const getAllItems = () =>
     getToken().then((token) =>
       fetch(apiUrl, {

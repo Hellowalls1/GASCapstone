@@ -47,11 +47,14 @@ export default function Login() {
               <FormGroup>
                 <Button>Login</Button>
               </FormGroup>
-              <em className="register">
+              {/* <em className="register">
                 Not registered? <br></br>
                 <Link to="register" type="button" class="btn btn-info">
                   Register
                 </Link>
+              </em> */}
+              <em className="register">
+                Username: tim@tim.com Password: user123
               </em>
             </fieldset>
           </Form>

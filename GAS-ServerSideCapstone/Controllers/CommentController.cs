@@ -29,7 +29,8 @@ namespace GAS_ServerSideCapstone.Controllers
         {
             return Ok(_commentRepo.GetAll());
         }
-
+        // needed for the update in the front end ui
+        //it's used at the end of the comment update in the comment provider
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -40,13 +41,14 @@ namespace GAS_ServerSideCapstone.Controllers
             }
             return Ok(comment);
         }
-
+        //passing item id to GetByItemId method in repository
         [HttpGet("getbyitem/{id}")]
         public IActionResult GetByItem(int id)
         {
             return Ok(_commentRepo.GetByItemId(id));
         }
 
+        //getting the current user
         private User GetCurrentUser()
         {
             string firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -62,7 +64,9 @@ namespace GAS_ServerSideCapstone.Controllers
             _commentRepo.Add(comment);
             return CreatedAtAction("Get", new { id = comment.Id }, comment);
         }
-
+        //passing the id and the object/class of comment
+        //if the ids are not the same return a bad request
+        //making sure that the user id is the current user id because it isn't passing the user id it is just passing the  comment id
         [HttpPut("{id}")]
         public IActionResult Put(int id, Comment comment)
         {

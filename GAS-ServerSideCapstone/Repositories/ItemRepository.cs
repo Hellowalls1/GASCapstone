@@ -17,7 +17,7 @@ namespace GAS_ServerSideCapstone.Repositories
             _context = context;
         }
 
-
+        //not being used
         public List<Item> GetAll()
         {
             var All = _context.Item.Include(i => i.User)
@@ -28,6 +28,11 @@ namespace GAS_ServerSideCapstone.Repositories
             return All;
         }
 
+        //including the User for user data
+        //including the category information for the UI
+        //where the booleon is false
+        //ordering by title alphabetically
+        //listing
         public List<Item> GetAllNotForSale()
         {
             var All = _context.Item.Include(i => i.User)
@@ -38,6 +43,10 @@ namespace GAS_ServerSideCapstone.Repositories
             return All;
         }
 
+        //getting the user information
+        //getting the category 
+        //getting if the item is for sale
+        //ordering by the title
         public List<Item> GetAllItemsForSale()
         {
             var All = _context.Item.Include(i => i.User)
@@ -47,7 +56,8 @@ namespace GAS_ServerSideCapstone.Repositories
                                    .ToList();
             return All;
         }
-
+        //adding an item
+        //my understanding that SaveChanges saves the item to the database after adding
         public void Add(Item item)
         {
             _context.Add(item);
@@ -61,7 +71,7 @@ namespace GAS_ServerSideCapstone.Repositories
                 .FirstOrDefault(i => i.Id == id);
         }
 
-
+        //not being used
         public List<Item> GetByFirebaseUserId(string id)
         {
             return _context.Item.Include(i => i.User)
